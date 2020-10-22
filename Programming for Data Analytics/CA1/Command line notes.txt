@@ -1,0 +1,33 @@
+Hadoop - Part 1
+su - hduser                                                         
+cd /usr/local/hadoop                                                
+cd /home/ubuntu/environment/lab2.1                                  
+sbin/start-dfs.sh                                                   
+sbin/start-yarn.sh                                                  
+sbin/start-all.sh                                                  
+jps
+sudo chmod 777 /home/ubuntu/environment/lab2.1
+sudo chmod 777 .*. /home/ubuntu/environment/lab2.1
+/usr/local/hadoop/bin/hadoop com.sun.tools.javac.Main *.java
+/usr/local/hadoop/bin/hadoop jar cf StandardDev.jar StandardDev*.class
+jar cf StandardDev.jar StandardDev*.class
+./PDA_CA_gendata.sh 5000 x19131321.txt
+/usr/local/hadoop/bin/hadoop fs -mkdir /lab2.1
+/usr/local/hadoop/bin/hadoop fs -copyFromLocal x19131321.txt /lab2.1
+/usr/local/hadoop/bin/hadoop jar StandardDev.jar StandardDevDriver /lab2.1/x19131321.txt x19131321output.txt
+/usr/local/hadoop/bin/hadoop fs -copyToLocal x19131321output.txt /home/ubuntu/environment/lab2.1/output/
+
+Pig - Part 2
+su - hduser
+cd /home/ubuntu/environment/
+mkdir Downloads
+wget http://ftp.heanet.ie/mirrors/www.apache.org/dist/pig/latest/pig-0.17.0.tar.gz
+cd /usr/local
+pig -x local gendata.sh
+
+Hive - Part 3
+cd /home/hduser/data/hive/
+pwd
+/home/hduser/data/hive
+hdfs dfs -mkdir /data
+

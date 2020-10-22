@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Jarbar</title>
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/application.css.scss" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+   <body>	
+	
+<!--View for editing an existing Ad-->
+
+	<div class= "container nopadding" style="background-color: #F8F9F9">
+	<header class="jumbotron" >
+   </header>
+
+   	   <%= render partial: "Shared/NavBar" %>
+<div class="col-sm-8 col-md-4">
+	</div>
+	
+	<div class="col-sm-8 col-md-4 pd-3">
+
+<h1>Editing Add</h1>
+
+<%= render 'form', add: @add %>
+
+<%= link_to 'Show', @add %> |
+<%= link_to 'Back', adds_path %>
+
+</div>
+<div class="col-sm-8 col-md-4">
+	</div>
+
+</div>
+</div>
+</div>
+<%= render partial: "Shared/footer" %>
+
+</body>

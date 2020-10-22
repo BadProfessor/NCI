@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Jarbar</title>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/application.css.scss" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  
+
+</head>
+
+<!--A view to show add posted by the signed in user-->
+
+<body>
+  <div class= "container nopadding" style="background-color: #F8F9F9">
+  <header class="jumbotron" >
+   </header>
+   
+   
+   <%= render partial: "Shared/NavBar" %>
+
+<!--A view to show each add belonging to a user in a grid view-->
+
+<div class "add">
+<% current_user.adds.each do | add |%>
+  <div class="col-sm-8 col-md-4" >
+ <div class="thumbnail">  
+    <div class="add-thumb">
+    <%= link_to image_tag(add.image_url(:thumb).to_s), add %>
+    </div>
+    
+    <% if add.category? %>
+    <div class="category">
+      <span class"tag is-dark"><% add.category %></span>  
+        </div>    
+      <% end %>
+    
+
+    
+    <h3 class="title"><%= link_to add.title, add %></h3>
+    
+    <p class="advertiser">Advertised by: <%= add.user.UserName %></p>
+    
+    <p class="price">Amount Offered: <%= number_to_currency(add.price)%></p>
+  
+    <!--A Edit and Delete button that can only be viewed by the author of the Ad-->
+  
+    <div class="btn btn-default">
+    <% if add_author(add)%>
+      <%= link_to 'Edit', edit_add_path(add), :class => "btn" %>
+    <% end %>
+    </div>
+    
+    <div class="btn btn-default">
+      <% if add_author(add)%>
+        <%= link_to 'Delete', add, method: :delete, data: { confirm: "Are you sure ?"}, :class => "btn" %>
+        <% end %>
+        </div>
+        </div>
+      </div>  
+
+  <% end %>
+  </div>
+</div>
+<%= render partial: "Shared/footer" %>
+</body>

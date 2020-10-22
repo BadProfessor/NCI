@@ -1,0 +1,46 @@
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/application.css.scss" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+  <div class= "container nopadding" style="background-color: #F8F9F9">
+  <header class="jumbotron" >
+   </header>
+
+   <!--Pulling shared Navigation bar-->
+
+        <%= render partial: "Shared/NavBar" %>
+<div class="column pd-8" align="center">
+
+        
+<div class="tweets">                
+<% @blog.posts['data'].each do |post| %>
+  <div class="blog" >
+</br>
+<%= p "Title: #{post['attributes']['title']}" %> 
+  </br>
+  </br>
+  <%= p "Content: #{post['attributes']['content']}" %> 
+  </br>
+  </br>
+  <%= p "Slug: #{post['attributes']['slug']}" %> 
+  </div>
+    <% end %>
+  </div>
+    
+<form action="/request" method="POST">
+  <input type="text" name="my_data">
+  <input type=submit>
+</form>
+      
+</div>
+</div>
+
+<!--Pulling shared Footer-->
+
+<%= render partial: "Shared/footer" %>
+</body>

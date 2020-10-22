@@ -1,0 +1,39 @@
+<nav class="navbar navbar-default">
+
+<!--Buttons that link to other pages in the site-->
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      		<li><a class="navbar-brand" href = "/">Home</a></li>
+      	  	<li"><a class="navbar-brand" href = "/adds/new/">New Add</a></li>
+        	<li"><a class="navbar-brand" href = "/tweet/">Tweets</a></li>    
+<li"><a class="navbar-brand" href = "/blog/">Blog</a></li>    
+        
+      </ul>
+
+      <form class="navbar-form navbar-left" action="/search">
+              <div class="form-group">
+                <input type="text" class="form-control" name="q" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default" >Submit</button>
+            </form>
+
+
+<!--links to sign up or sign in, and if signed in a link to sign out or view the logged in users account-->
+
+      <ul class="nav navbar-nav navbar-right">
+
+        <% if current_user %>
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li> 
+        <li><%= link_to 'MyAccount', edit_user_registration_path %></li>        
+    	<%else%>
+		<li><%= link_to 'Sign up', new_user_registration_path %></li>
+		<li><%= link_to 'Sign in', new_user_session_path%></li>
+		<%end%>
+        
+          </ul>
+    </div>
+
+</nav>
+
+

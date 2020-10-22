@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-image">
+
+  </div>
+  <div class="card-content">
+    <h3 class="pt1 title is-5"><%= adds.title %></h3>
+    <p class="pv1"><%= truncate(adds.description, length: 120) %></p>
+    <div class="media pt3">
+      <div class="media-left pt3">
+        <figure class="image is-48x48">
+          <%= gravatar_for(adds.user, size: 96) %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="has-text-weight-bold mb0"><%= adds.user.UserName %></p>
+        <p class="is-italic mb0"><time>posted <%= time_ago_in_words(adds.created_at) %> ago</time></p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+current directory: /home/hduser/CAS/DMAF/DMAF/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+/home/hduser/.rvm/rubies/ruby-2.5.1/bin/ruby -I /home/hduser/.rvm/rubies/ruby-2.5.1/lib/ruby/site_ruby/2.5.0 -r ./siteconf20200731-19812-1tosxk1.rb extconf.rb
+creating Makefile
+
+current directory: /home/hduser/CAS/DMAF/DMAF/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/hduser/CAS/DMAF/DMAF/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/hduser/CAS/DMAF/DMAF/vendor/cache/ruby/2.5.0/gems/json-2.3.1/ext/json
+make "DESTDIR=" install

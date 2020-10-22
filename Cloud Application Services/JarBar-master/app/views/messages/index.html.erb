@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Jarbar</title>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/application.css.scss" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<div class= "container nopadding" style="background-color: #F8F9F9">
+	<header class="jumbotron" >
+   </header>
+   
+      	<%= render partial: "Shared/NavBar" %>
+
+<!--A view to send messages to a user linked to an Ad-->
+
+          	   <div class="col-sm-8 col-md-4 pd-7">
+<h1 class="title is-4">Message <%= @chat.recipient.UserName %></h1>
+
+<% if @over_five %>
+  <%= link_to "Show previous", '?m=all', class:'button is-link' %>
+<% end %>
+
+
+
+<section id="messages">
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <article class="message">
+        <div class="message-body">
+          <div class="inline-block pd-5">
+          	<strong>
+          		<%= user.UserName %>
+          		</br>
+          	</strong> 
+          	<%= message.message_time %>
+          	</br>
+          	</strong> 
+          	<%= message.body %>
+          	</div>
+          <div class="block pt4">
+          </div>
+        </div>
+      </article>
+    <% end %>
+  <% end %>
+</section>
+
+<%= form_for [@chat, @message] do |f| %>
+  <%= f.text_area :body, class: "textarea", placeholder: "Inquire about a ad..." %>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
+  <div class="text-align-right">
+    <%= f.submit "Send message", class: "button is-link is-large mt3" %>
+  </div>
+<% end %>
+</div>
+
+</div>
+<%= render partial: "Shared/footer" %>
+</body>

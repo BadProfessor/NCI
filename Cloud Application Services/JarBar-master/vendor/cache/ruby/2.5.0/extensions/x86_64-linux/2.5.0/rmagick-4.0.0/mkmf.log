@@ -1,0 +1,18 @@
+find_executable: checking for brew... -------------------- no
+
+/home/hduser/.rvm/rubies/ruby-2.5.1/lib/ruby/2.5.0/mkmf.rb:1553: warning: Insecure world writable dir /home/hduser/hadoop/sbin in PATH, mode 040777
+--------------------
+
+find_executable: checking for pacman... -------------------- no
+
+--------------------
+
+find_executable: checking for gcc... -------------------- yes
+
+--------------------
+
+find_executable: checking for pkg-config... -------------------- yes
+
+--------------------
+
+ERROR: Can't install RMagick 4.0.0. Can't find ImageMagick with pkg-config

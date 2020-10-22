@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<title>Jarbar</title>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles/application.css.scss" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<!--A view to display each Ad indivudually when selected -->
+
+	<div class= "container nopadding" style="background-color: #F8F9F9">
+	<header class="jumbotron" >
+   </header>
+   
+      	<%= render partial: "Shared/NavBar" %>
+ 
+ 
+ <div class="column pd-2">
+
+ <section class="section add-show">
+ 	<div class="columns">
+ 		<div class="column">
+ 			<h1 class="title"><%= @add.title %></h1>
+ 			
+	<div class="feature-image">
+		<%= image_tag(@add.image_url(:default)) %>
+		</div> 
+
+	<div class="content">
+	
+	<h3 class="subtitle">Job Spec</h3>
+	
+<!--Pulling info from the Database and display in a table-->
+
+	<table class="table">
+		<% if @add.category %>
+		<tr>
+			<td class="column1">Category</td>
+			<td><%= @add.category %></td>
+		</tr>
+		<% end %>
+		
+		<% if @add.vintage %>
+		<tr>
+			<td class="column1">Vintage</td>
+			<td><%= @add.vintage %></td>
+		</tr>
+		<% end %>
+		
+		<% if @add.description %>
+		<tr>
+			<td class="column1">Description</td>
+			<td><%= @add.description %></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+</div>
+<div class="column2">
+	<div class="border">
+		<h4 class="title">Amount offered <%= number_to_currency(@add.price) %></h4>
+		<p class="has-text-centered mb4">Advertsied by <%= @add.user.UserName %></p>
+		<form>
+		
+		</div>
+		
+	</div>
+</div>
+
+<!-- creates a link to message the Add author if the current user is logged in and if not logged a link to register for an account -->
+
+<div class="chat">
+    <% if user_signed_in? && current_user.id != @add.user_id %>
+      <%= link_to "Message #{@add.user.UserName}", chats_path(sender_id: current_user.id, recipient_id: @add.user.id), method: 'post', class:"button is-link" %>
+    <% elsif user_signed_in? && current_user.id == @add.user_id  %>
+      <%= link_to "Chats", chats_path %>
+    <% else %>
+    <%= link_to "Sign up to message #{@add.user.UserName}", new_user_registration_path %>
+    <% end %>
+	</div>
+
+	<!--A Edit and Delete button that can only be viewed by the author of the Ad-->
+
+		<div class="btn btn-default">
+		<% if add_author(@add)%>
+			<%= link_to 'Edit', edit_add_path(@add), :class => "btn" %>
+		<% end %>
+		</div>
+
+		<div class="btn btn-default">
+			<% if add_author(@add)%>
+				<%= link_to 'Delete', @add, method: :delete, data: { confirm: "Are you sure ?"}, :class => "btn" %>
+				<% end %>
+				</div>
+
+
+		</section>
+	</div>
+
+</div>
+<%= render partial: "Shared/footer" %>
+</body>
+
